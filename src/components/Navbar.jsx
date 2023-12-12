@@ -38,7 +38,6 @@ const Navbar = () => {
 
           <li><Link className={location === "/" ? "active" : ""} href="/" >Home</Link></li>
           <li><Link className={location === "/market" ? "active" : ""} href="/market" >Market</Link></li>
-          <li><Link className={location === "/portfolio" ? "active" : ""} href="/portfolio">Portfolio Tracker</Link></li>
           <li><Link className={location === "/about" ? "active" : ""} href="/about">About</Link></li>
         </ul>
       </nav>

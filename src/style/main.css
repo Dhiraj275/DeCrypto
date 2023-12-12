@@ -575,6 +575,46 @@ body {
   margin-right: 10px;
 }
 
+.about .theme-text {
+  margin: 10px 0;
+  font-weight: bold;
+  background-image: linear-gradient(120deg, var(--orange), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.about h2 {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.about h2 span {
+  font-size: 25px;
+  margin: 10px 0;
+}
+.about p,
+.about ul {
+  text-align: justify;
+  margin-bottom: 25px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.9764705882);
+}
+.about p span,
+.about ul span {
+  background-image: linear-gradient(240deg, var(--orange), var(--primary));
+  -webkit-background-clip: text;
+  font-weight: bold;
+  -webkit-text-fill-color: transparent;
+}
+.about p li,
+.about ul li {
+  margin-bottom: 20px;
+}
+.about strong {
+  -webkit-background-clip: text;
+  font-weight: bold;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(240deg, var(--orange), var(--primary));
+}
+
 @media (max-width: 1280px) {
   .navbar {
     padding: 0 25px;

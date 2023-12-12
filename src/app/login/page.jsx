@@ -37,7 +37,7 @@ const LoginComponent = () => {
     const { email, password } = formData
     var status = await login({ email, password, setErrorMsg })
     if (status == "success") {
-      router.push("/portfolio")
+      router.push("/")
     }
   }
   return (

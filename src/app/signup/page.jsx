@@ -38,7 +38,7 @@ const  SignupComponent =()=>{
     const {email, name, password} = formData
     var status = await register({email, name, password, setErrorMsg})
     if(status=="success"){
-      router.push("/portfolio")
+      router.push("/")
     }
   }
   return (
