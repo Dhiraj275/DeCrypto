@@ -1,12 +1,13 @@
 import { database } from '@/config/firebase';
 import { AuthContext } from '@/providers/AuthProvider';
 import { ref, set } from 'firebase/database';
+import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 const SearchTicker = ({ setOpen, setWatchList }) => {
     const [searchQuery, setSearchQuery] = useState("")
     const [cryptoData, setCryptoData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:4000/api/exchange/market_details/coins`)
+        fetch(`https://decrypto-1fz0.onrender.com/api/exchange/market_details/coins`)
             .then((data) => {
                 data.json().then(data => {
                     setCryptoData(data)
@@ -25,12 +26,12 @@ const SearchTicker = ({ setOpen, setWatchList }) => {
                         if (searchQuery !== "") {
                             if (matchQuery(item)) {
                                 return (
-                                    <TickerItem setWatchList={setWatchList} setOpen={setOpen} item={item} />
+                                    <TickerItem key={key} setWatchList={setWatchList} setOpen={setOpen} item={item} />
                                 )
                             }
                         } else {
                             return (
-                                <TickerItem setWatchList={setWatchList} setOpen={setOpen} item={item} />
+                                <TickerItem key={key} setWatchList={setWatchList} setOpen={setOpen} item={item} />
                             )
                         }
                     })
@@ -39,19 +40,25 @@ const SearchTicker = ({ setOpen, setWatchList }) => {
         </div>
     )
 }
-const TickerItem = ({ item, setOpen , setWatchList}) => {
+const TickerItem = ({ item, setOpen, setWatchList }) => {
     const { user, setUser, fetchUser } = useContext(AuthContext)
+    const router  = useRouter()
     const addToWatchList = () => {
-        const watchListRef = ref(database, `/users/${user.uid}/watchList/${item.pair}`)
-        const watchList = [...user.watchList]
-        set(watchListRef, { name: item.currency }).then( async() => {
-            setOpen(false)
-            watchList.push({ name: item.currency, pair: item.pair })
-            const newData = await fetchUser();
-            setUser(newData);
-            setWatchList(newData.watchList)
+        if (user) {
+            const watchListRef = ref(database, `/users/${user.uid}/watchList/${item.pair}`)
+            const watchList = [...user.watchList]
+            set(watchListRef, { name: item.currency }).then(async () => {
+                setOpen(false)
+                watchList.push({ name: item.currency, pair: item.pair })
+                const newData = await fetchUser();
+                setUser(newData);
+                setWatchList(newData.watchList)
 
-        })
+            })
+        }
+        else{
+            router.push("/login")
+        }
     }
     return (
         <div onClick={addToWatchList} className='crypto-item'>

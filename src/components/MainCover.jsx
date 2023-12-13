@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './navbar'
-import Sidebar from './Sidebar'
+import Navbar from "@/components/Navbar"
+import Sidebar from "@/components/Sidebar"
 import { AuthProvider } from '@/providers/AuthProvider'
 
 const MainCover = ({ children }) => {

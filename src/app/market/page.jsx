@@ -10,7 +10,7 @@ export default function Home() {
   const [cryptoData, setCryptoData] = useState([])
   useEffect(() => {
 
-    fetch(`http://localhost:4000/api/exchange/market_details/coins`)
+    fetch(`https://decrypto-1fz0.onrender.com/api/exchange/market_details/coins`)
       .then((data) => {
         data.json().then(data => {
           setCryptoData(data)

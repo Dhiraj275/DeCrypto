@@ -15,7 +15,7 @@ export default function Page({ params }) {
     }
     fetchData();
 
-    fetch(`http://localhost:4000/api/exchange/market_details/coins`)
+    fetch(`https://decrypto-1fz0.onrender.com/api/exchange/market_details/coins`)
       .then((data) => {
         data.json().then(data => {
           setCryptoData(data)
@@ -56,12 +56,12 @@ export default function Page({ params }) {
                       if (searchQuery !== "") {
                         if (matchQuery(item)) {
                           return (
-                            <TickerItem item={item} />
+                            <TickerItem  key={key} item={item} />
                           )
                         }
                       } else {
                         return (
-                          <TickerItem item={item} />
+                          <TickerItem  key={key} item={item} />
                         )
                       }
                     })

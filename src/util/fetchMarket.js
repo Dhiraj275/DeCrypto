@@ -1,7 +1,7 @@
 
 function fetchPrice(ticker) {
   return new Promise(resolve => {
-    fetch('http://localhost:4000/api/exchange/market_details')
+    fetch('https://decrypto-1fz0.onrender.com/api/exchange/market_details')
       .then((data) => {
         data.json().then(data => {
           var newData = JSON.parse(data)
@@ -13,7 +13,7 @@ function fetchPrice(ticker) {
           )[0]
           if (targetTicker) {
             var pair = targetTicker.pair
-            fetch(`http://localhost:4000/api/market_data/trade_history?pair=${pair}`)
+            fetch(`https://decrypto-1fz0.onrender.com/api/market_data/trade_history?pair=${pair}`)
               .then((data) => {
                 data.json().then(data => {
                   var newData = JSON.parse(data)

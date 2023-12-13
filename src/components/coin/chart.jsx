@@ -63,7 +63,7 @@ export default function Graph({ pair }) {
 
         var fetchData = () => {
             return new Promise(resolve => {
-                fetch(`http://localhost:4000/api/market_data/candles?pair=${pair}`)
+                fetch(`https://decrypto-1fz0.onrender.com/api/market_data/candles?pair=${pair}`)
                     .then((data) => {
                         data.json().then(data => {
                             var newData = JSON.parse(data)
