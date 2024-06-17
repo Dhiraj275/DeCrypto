@@ -13,16 +13,18 @@ const CryptoCard = ({ item, setWatchList = () => { }, showPrice = true, currency
         async function fetchData() {
             setPrice(await fetchPrice(item))
         }
-        showPrice&&fetchData();
+        showPrice && fetchData();
     }, [])
     var i = 0;
     const deleteFromWatchList = () => {
-        const watchListRef = ref(database, `/users/${user.uid}/watchList/${item.pair}`)
-        remove(watchListRef).then(async () => {
-            const newData = await fetchUser();
-            setUser(newData);
-            setWatchList(newData.watchList)
-        })
+        if (user) {
+            const watchListRef = ref(database, `/users/${user.uid}/watchList/${item.pair}`)
+            remove(watchListRef).then(async () => {
+                const newData = await fetchUser();
+                setUser(newData);
+                setWatchList(newData.watchList)
+            })
+        }
     }
     return (
         <div className='crypto-card'>

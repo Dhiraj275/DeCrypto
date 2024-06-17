@@ -37,7 +37,7 @@ export default function Page({ params }) {
                 <div className="info">
                   <div className="name">{params.coin}</div>
 
-                  <div className="price">&#x20B9;{coinCurrentPrice}</div>
+                  <div className="price">&#x20B9;{coinCurrentPrice.toLocaleString("en-In")}</div>
 
                 </div>
               </div>
