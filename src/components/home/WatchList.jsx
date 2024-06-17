@@ -60,7 +60,7 @@ const WatchListComponent = () => {
             <Backdrop open={isLoading} setOpen={()=>{}}>
                 <div className="inner">
                     <h4>Just a Moment! 😊</h4>
-                    <p>Hi there! <span>I'm</span> so happy you’re here. Our server needs a little time to wake up and get ready – about <span>1-2 minutes</span>.</p>
+                    <p>Hi there! <span>I&apos;m</span> so happy you’re here. Our server needs a little time to wake up and get ready – about <span>1-2 minutes</span>.</p>
 
                     <p>While you wait, feel free to grab a coffee or enjoy a little break. Thanks for your patience and understanding!</p>
                     <div className="loader">
