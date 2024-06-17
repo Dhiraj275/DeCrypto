@@ -8,12 +8,13 @@ export default function Home() {
   return (
     <>
       <MainCover>
+        
         <div className="top-seach-bar">
           <input type="search" placeholder='Search' />
           <SearchIcon />
         </div>
         <WatchList />
-      
+
       </MainCover>
     </>
 

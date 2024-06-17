@@ -22,14 +22,18 @@ const WatchList = ({ open, setOpen }) => {
 const defaultList = [{ "name": "BTC", "pair": "I-BTC_INR" }, { "name": "ETH", "pair": "I-ETH_INR" }, { "name": "BNB", "pair": "I-BNB_INR" }, { "name": "SOL", "pair": "I-SOL_INR" }, { "name": "DOGE", "pair": "I-DOGE_INR" }, { "name": "MATIC", "pair": "I-MATIC_INR" }, { "name": "LINK", "pair": "I-LINK_INR" }, { "name": "MANA", "pair": "I-MANA_INR" }];
 const WatchListComponent = () => {
     const [isSearchOpen, setSearchOpen] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const { user } = useContext(AuthContext)
     const [watchList, setWatchList] = useState([])
 
     useEffect(() => {
+        fetch(`https://decrypto-1fz0.onrender.com/api/market_data/trade_history?pair=I-BNB_INR`).then(() => {
+            setIsLoading(false)
+        })
         if (user) {
             setWatchList(user.watchList)
         }
-        else{
+        else {
             setWatchList(defaultList)
         }
     }, [])
@@ -53,6 +57,41 @@ const WatchListComponent = () => {
                 </div>
 
             </div>
+            <Backdrop open={isLoading} setOpen={()=>{}}>
+                <div className="inner">
+                    <h4>Just a Moment! 😊</h4>
+                    <p>Hi there! <span>I'm</span> so happy you’re here. Our server needs a little time to wake up and get ready – about <span>1-2 minutes</span>.</p>
+
+                    <p>While you wait, feel free to grab a coffee or enjoy a little break. Thanks for your patience and understanding!</p>
+                    <div className="loader">
+                        <div class="server-rack">
+                            <div class="fan-body">
+                                <div class="fan">
+                                    <img src='/images/icons/fan.svg' />
+                                </div>
+                            </div>
+                            <div class="fan-body">
+                                <div class="fan">
+                                    <img src='/images/icons/fan.svg' />
+                                </div>
+                            </div>
+                            <div class="fan-body">
+                                <div class="fan">
+                                    <img src='/images/icons/fan.svg' />
+                                </div>
+                            </div>
+                            <div class="fan-body">
+                                <div class="fan">
+                                    <img src='/images/icons/fan.svg' />
+                                </div>
+                            </div>
+                            <div class="start-button">
+                                <img src='/images/icons/start-switch.svg' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Backdrop>
             <Backdrop open={isSearchOpen} setOpen={setSearchOpen}>
                 <SearchTicker setWatchList={setWatchList} setOpen={setSearchOpen} />
             </Backdrop>

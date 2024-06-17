@@ -40,6 +40,87 @@ body {
     background-color: var(--background);
 }
 
+.inner {
+    background-color: #0b0c0c;
+    border-radius: 20px;
+    padding: 20px;
+    width: 700px;
+
+    h4 {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 6px;
+
+        span {
+            position: relative;
+            background-image: $theme-gradiant;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+    }
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+
+    .server-rack {
+        border: 10px solid #1a1b1f;
+        border-radius: 20px;
+        width: 570px;
+        display: flex;
+        margin-top: 20px;
+        padding: 10px;
+        position: relative;
+
+    }
+
+    .fan-body {
+        border: 10px solid #1a1b1f;
+        border-radius: 20px;
+        height: 100px;
+        margin: 0 10px;
+        width: 100px;
+        background-color: #1a1b1f;
+    }
+
+    .fan-body img {
+        background-color: #0b0c0c;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transform: rotate(0deg);
+        fill: #f4ac2e;
+    }
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.start-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.start-button img {
+    width: 60px;
+    height: 60px;
+}
+
 .navbar {
     padding: 0 80px;
     background-color: $background-color_2;
@@ -704,6 +785,7 @@ body {
         margin-bottom: 25px;
         line-height: 30px;
         color: #fffffff9;
+
         span {
             background-image: linear-gradient(240deg, var(--orange), var(--primary));
             -webkit-background-clip: text;
@@ -764,6 +846,21 @@ body {
 }
 
 @media (max-width:786px) {
+    .loader .server-rack{
+        width: 100%;
+    }
+    .inner{
+        width: auto;
+    }
+    .loader .fan-body{
+        width: 20%;
+        height: auto;
+        border-radius: 10px;
+        aspect-ratio: 1 / 1;
+    }
+    .loader .fan-body:nth-child(4){
+        display: none;
+    }
     .navbar {
         .backdrop-closer {
             position: absolute;
